@@ -1,20 +1,17 @@
-# Ex. No: 15E - Build and Evaluate an Expression Tree
+# Ex. No: 15D - Build a Heap Tree Using Python
 
 ## AIM:
-To write a Python program to build and evaluate the given Expression tree.
+To write a Python program to build a heap tree using appropriate Python package and function.
 
 ---
 
 ## ALGORITHM:
 
 1. **Start the program.**
-2. Create nodes for operators and operands.
-3. Build the expression tree by connecting nodes in the correct hierarchical structure.
-4. Define a recursive function `evaluate(root)`:
-   - If the node is a number (leaf), return it.
-   - Else, recursively evaluate left and right subtrees.
-   - Apply the operator at the current node to the results.
-5. Return the final result from the root node.
+2. Import the `heapq` module.
+3. Define a function `heaptree(H)` that takes a list `H` as input.
+4. Use `heapq.heapify(H)` to convert the list into a min-heap.
+5. Print the created heap.
 6. **End the program.**
 
 ---
@@ -25,56 +22,16 @@ To write a Python program to build and evaluate the given Expression tree.
 # Reg.No- 212223060191
 # Name- Oviya K P
 
-class Node:
-    def __init__(self, val, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
- 
-
-def isLeaf(node):
-    return node.left is None and node.right is None
- 
-def process(op, x, y):
-    if op == '+':
-        return x + y
-    if op == '-':
-        return x - y
-    if op == '*':
-        return x * y
-    if op == '/':
-        return x / y
- 
-def evaluate(root):
-
-    if root is None:
-        return 0
-  
-    if isLeaf(root):
-        return float(root.val)
-    
-    x = evaluate(root.left)
-    y = evaluate(root.right)
-    return (process(root.val, x, y))
-    
-
-
-root = Node('*')
-root.left = Node('+')
-root.right = Node('+')
-root.left.left = Node('7')
-root.left.right = Node('6')
-root.right.left = Node('2')
-root.right.right = Node('6')
-
- 
-print('The value of the expression tree is',evaluate(root))
+import heapq
+def heaptree(H):
+    heapq.heapify(H)
+    print("The created Heap is",H)
 
 ```
 
-## OUTPUT:
-<img width="1110" height="212" alt="image" src="https://github.com/user-attachments/assets/d808b64b-d72a-4d66-84b1-e8dcfc73dab8" />
+## OUTPUT
+<img width="1176" height="166" alt="image" src="https://github.com/user-attachments/assets/46f43fec-e7e8-4094-a2bb-7c7bf4a7aadf" />
 
 
-## RESULT:
-Thus the python program for to build and evaluate the given Expression tree has been implemented and executed successfully.
+## RESULT
+Thus the python program for to build a heap tree using appropriate Python package and function has been implemented and executed successfully.
