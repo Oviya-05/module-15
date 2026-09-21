@@ -1,21 +1,18 @@
-# Ex. No: 15B - Build a Binary Search Tree Using Built-in Function
+# Ex. No: 15C - Expression Tree with Inorder and Postorder Traversal
 
 ## AIM:
-To write a Python program to build a binary search tree using a built-in function.
+To write a Python program to build the given expression tree and print the inorder and postorder traversals.
 
 ---
 
 ## ALGORITHM:
 
 1. **Start the program.**
-2. Define `_build_bst_from_sorted_values(sorted_values)` to recursively build a binary search tree (BST) from a sorted list.
-3. Define `left_subtree(l)` to print the left subtree of the BST.
-4. Take user input for the number of elements and store the values in a list `a`.
-5. Sort the list and pass it to `_build_bst_from_sorted_values()` to construct the BST.
-6. Print the postorder traversal of the BST.
-7. Call `left_subtree(l)` to print the left subtree.
-8. Check whether the tree is a binary search tree using the `is_bst` property.
-9. **End the program.**
+2. Import the required modules (`build` and `Node` from `binarytree`).
+3. Define a list `x` representing the expression tree in pre-order fashion (with `None` for missing nodes).
+4. Use the `build()` function to generate the binary tree.
+5. Print the **inorder** and **postorder** traversal of the tree.
+6. **End the program.**
 
 ---
 
@@ -24,41 +21,21 @@ To write a Python program to build a binary search tree using a built-in functio
 ```
 # Reg.No- 212223060191
 # Name- Oviya K P
-
-from binarytree import Node
-def _build_bst_from_sorted_values(sorted_values):
-    if len(sorted_values)==0:
-        return None
-    mid=len(sorted_values)//2
-    root=Node(sorted_values[mid])
-    root.left=_build_bst_from_sorted_values(sorted_values[:mid])
-    root.right=_build_bst_from_sorted_values(sorted_values[mid+1:])
-    return (root)
-def left_subtree(l):
-    print("Left Subtree : ")
-    for i in l[1].values:
-        print(i,"-->",end="")
-    return
-a=[]
-size=int(input())
-for i in range(0,size):
-    val=int(input())
-    a.append(val)
-x=sorted(a)
-
-l=_build_bst_from_sorted_values(x)
-print("Postorder :",l.postorder)
-left_subtree(l)
-print("\nIs this a Binary Search Tree? ",l.is_bst)
+from binarytree import build
+nodes=[10,12,5,3,4,11,2,None,None,6,7,None,None,None,8]
+root=build(nodes)
+print("Binary tree:")
+for i in (root.values):
+  print(i,"-->",end="")
+print("\nlevel order traversal:",root.levelorder)
+print("\nInorder traversal:",root.inorder)
+print("\nPreorder traversal:",root.preorder)
+print("\nPostorder traversal:",root.postorder)
 ```
 
 ## OUTPUT
+<img width="1252" height="215" alt="image" src="https://github.com/user-attachments/assets/ec7e4a82-ad8c-4fcf-8912-505023f9dbc0" />
 
 
-<img width="1341" height="382" alt="image" src="https://github.com/user-attachments/assets/d7037274-f57b-44be-bd1c-1cd45dfde601" />
-
-```
-
-RESULT
-
-Thus the python program for to build a binary search tree using a built-in function has been implemented and executed successfully.
+## RESULT
+Thus the python program for to build the given expression tree and print the inorder and postorder traversals has been implemented and executed successfully.
